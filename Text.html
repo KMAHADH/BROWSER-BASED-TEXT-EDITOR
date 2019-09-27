@@ -1,0 +1,1715 @@
+﻿<title>Text Editor</title>
+<body style="width: 91%; height: 90%"; background="http://getwallpapers.com/wallpaper/full/1/7/b/984444-new-color-hd-wallpaper-1920x1080-windows-10.jpg" onload="init(); imageX();">
+<var id="color"></var>
+<var id="back"></var>
+<var id="scheme"></var>
+<var id="justify"></var>
+<var id="bolden"></var>
+<var id="size"></var>
+<var id="font"></var>
+
+<input id="title" style="text-align: center;  font-size:4rem;font-family:Arial;line-height:1.4;width:100%;margin:4rem; margin-top: 2rem; padding:1rem;border:3px solid black;border-radius:0px; background-color: white;" onfocusout="myFunction()"; placeholder="DOCUMENT TITLE GOES HERE...">
+</input>
+<br />
+
+<div style="width: 105%; margin-top: -50px; margin-bottom: -50px;">
+<center>
+</center>
+</div>
+
+<script>
+function myFunction() 
+{
+document.title = document.getElementById("title").value;
+}
+</script>
+<div>
+<textarea id="content";  style="height: 63vh; font-size:2rem;font-family:Arial;line-height:1.4;width:100%;margin:4rem; margin-top: 2rem; padding:2rem;border:3px solid black;border-radius:0px; resize: none; background-color: white;"  wrap="hard"; white-space: pre-wrap; placeholder="DOCUMENT TEXT GOES HERE...">
+</textarea>
+
+<textarea id="text"; style="height: 65vh; font-size:2rem;font-family:Arial;line-height:1.4;width:100%;margin:4rem; margin-top: 2rem; padding:2rem;border:3px solid black;border-radius:0px; resize: none; overflow:hidden; display: none; background-color: white;" placeholder="DOCUMENT TEXT GOES HERE..." onload="init();">
+</textarea>
+
+<div id="overlayz" style="top: 25%; left: 25%; position: absolute; width:50%; height:50%; display: none;" >
+  <div>
+      <iframe id="thesaurus" overflow-x="hidden" style="display: none" src="http://www.thesuarus.com" height="560" width="100%" onLoad="thesaurus.scrollTo(0,370)"></iframe>
+  </div>
+ </div>
+
+<textarea readonly id="DocInfo"; style="overflow: hidden; background-color: rgba(255, 255, 255, 1); height: 0.5vh !important; font-size:2rem;font-family:Arial;line-height:0;width:100%;margin:4rem; margin-top: -4.2rem; padding:1.2rem;border:3px solid black;border-radius:0px; resize: none; x=-688"  wrap="hard"; white-space: pre-wrap; placeholder="">
+</textarea>
+
+</body>
+
+<div>
+
+<button id="CloseT" type="button" style="position: absolute; font-size:2em; padding-left: 4px; padding-top: 1px; font-family:Arial; left: 75.5%; float: left; vertical-align: middle; bottom: 69.4%; vertical-align:top; display: block;
+  margin-top: 10%; display: none;
+  width: 2.5%; height: 53px;
+  -o-transform:rotate(90deg); /* O" onclick="closeT()">X</button>
+
+
+<div id="overlayzee" style="top: 25%; left: 25%; position: absolute; width:50%; height:50%; display: none;" >
+  <div>
+      <iframe id="dictionary" overflow-x="hidden" style="display: none" src="http://www.dictionary.com" height="560" width="100%" onLoad="dictionary.scrollTo(0,370)"></iframe>
+  </div>
+ </div>
+
+</body>
+</div>
+
+<div>
+
+<button id="CloseD" type="button" style="position: absolute; font-size:2em; padding-left: 4px; padding-top: 1px; font-family:Arial; left: 75.5%; float: left; vertical-align: middle; bottom: 69.4%; vertical-align:top; display: block;
+  margin-top: 10%; display: none;
+  width: 2.5%; height: 53px;
+  -o-transform:rotate(90deg); /* O" onclick="closeD()">X</button>
+
+
+<button id="CatchIt" type="button" style="position: absolute; font-size:2em; padding-left: 2px; padding-top: 7px; font-family:Arial; left: -5.8%; float: left; vertical-align: middle; bottom: 22.4%; vertical-align:top; display: block;
+  margin-top: 10%;
+  width: 15.5%; height: 53px;
+  transform:rotate(7deg);
+  -ms-transform:rotate(90deg); /* IE 9 */
+  -moz-transform:rotate(90deg); /* Firefox */
+  -webkit-transform:rotate(90deg); /* Safari and Chrome */
+  -o-transform:rotate(90deg); /* O" onclick="getSelectedText()
+">Thesaurus</button>
+
+<button id="CatchItToo" type="button" style="position: absolute; font-size:2em; padding-left: 2px; padding-top: 7px; font-family:Arial; left: -5.8%; float: left; vertical-align: middle; bottom: 59.9%; vertical-align:top; display: block;
+  margin-top: 10%;
+  width: 15.5%; height: 53px;
+  transform:rotate(7deg);
+  -ms-transform:rotate(90deg); /* IE 9 */
+  -moz-transform:rotate(90deg); /* Firefox */
+  -webkit-transform:rotate(90deg); /* Safari and Chrome */
+  -o-transform:rotate(90deg); /* O" onclick="getSelectedTextToo()
+">Dictionary</button>
+
+<button id="claron" type="button" style="position: absolute; font-size:2em; padding-left: 0px; padding-top: 7px; font-family:Arial; right: -5.7%; float: right; vertical-align: middle; bottom: 58.9%; vertical-align:top; display: block;
+  margin-top: 10%;
+  width: 16.5%; height: 53px;
+  transform:rotate(7deg);
+  -ms-transform:rotate(90deg); /* IE 9 */
+  -moz-transform:rotate(90deg); /* Firefox */
+  -webkit-transform:rotate(90deg); /* Safari and Chrome */
+  -o-transform:rotate(90deg); /* O" onclick="ClarOn()">Menu Clarity: OFF</button>
+
+<button id="opctyon" type="button" style="position: absolute; font-size: 2em; padding-left: 0px; padding-top: 7px; font-family:Arial; right: -4.3%; float: right; vertical-align: middle; bottom: 20.6%; vertical-align:top;
+  margin-top: 10%;
+  width: 13.7%; height:53px;
+  transform:rotate(7deg);
+  -ms-transform:rotate(90deg); /* IE 9 */
+  -moz-transform:rotate(90deg); /* Firefox */
+  -webkit-transform:rotate(90deg); /* Safari and Chrome */
+  -o-transform:rotate(90deg); /* O" onclick="OpacityOn()">Opacity: OFF</button>
+
+<button id="opctyoff" type="button" style="position: absolute; font-size:2rem; padding-left: 0px; padding-top: 7px; font-family:Arial; right: -78px; float: right; vertical-align: middle; bottom: 20.6%; vertical-align:top; display: none;
+  margin-top: 10%;
+  width: 13.7%; height:53px;
+  transform:rotate(7deg);
+  -ms-transform:rotate(90deg); /* IE 9 */
+  -moz-transform:rotate(90deg); /* Firefox */
+  -webkit-transform:rotate(90deg); /* Safari and Chrome */
+  -o-transform:rotate(90deg); /* O" onclick="OpacityOff()">Opacity: ON</button>
+</div>
+
+
+<div id="overlay" style="bottom: 0px; left: -1px; position: absolute; background-color: rgba(255,255,255,0.7); width: 100%; height: 97px; z-index: -200; display: none;">
+
+</div>
+<div id="Options" style="margin-left: 0.3rem; margin-top: -2rem; ">
+<center>
+	<tr>
+		<td><button type="button" style="font-size:2rem;font-family:Arial; margin-right: -4.0rem; float: right;" onclick="saveTextAsFile()">Save!</button></td>
+		<td><button style="font-size:2rem; font-family: Arial; float: left; margin-left: 60px;" onclick="clearText()" >New File</button></td>
+		<td><button style="font-size:2rem; font-family: Arial; float: left; margin-left: 17px;" onclick="loadFileAsText()" >Load File</button></td>
+	</tr>
+	<tr top:20px;>
+		<td><input type="file" style="font-size:2rem;font-family:Arial; float: left; margin-left: 1rem; margin-right:-145px;" id="fileToLoad"></td>
+		<td>
+ 
+
+<select onchange="selection()";  style="font-size:2rem; margin-top:2px; margin-right: 1.1rem; float: right;" name="ab" id="FNT-TYP">
+    <option value="1";  onfocus="Arial()"; style="font-family:Arial;" >Arial</option>
+    <option value="2"; onfocus="Lucida()" style="font-family:Lucida Console;">Lucida Console</option>
+    <option value="3"; onfocus="Times()" style="font-family:Times New Roman;">Times New Roman</option>
+    <option value="4"; onfocus="Trebuchet()" style="font-family:Trebuchet MS;">Trebuchet MS</option>
+    <option value="5"; onfocus="MSsans()" style="font-family:Microsoft Sans Serif;">MS Sans Serif</option>
+    <option value="6"; onfocus="Tahoma()" style="font-family:Tahoma;">Tahoma</option>
+    <option value="7"; onfocus="Georgia()" style="font-family:Georgia;">Georgia</option>
+    <option value="8"; onfocus="Comicsans()" style="font-family:Comic Sans MS;">Comic Sans MS</option>
+    <option value="9"; onfocus="SegoeWP()" style="font-family:Segoe WP;">Segoe WP</option>
+    <option value="10"; onfocus="SegoeScript()" style="font-family:Segoe Script;">Segoe Script</option>    
+    <option value="11"; onfocus="RedAlert()" style="font-family:Red Alert Extended;">Red Alert Extended</option>
+    <option value="12"; onfocus="Impact()" style="font-family:Impact;">Impact</option>
+    <option value="13"; onfocus="UbuntuL()" style="font-family:Ubuntu; font-weight: 100;">Ubuntu Light</option>
+    <option value="14"; onfocus="UbuntuR()" style="font-family:Ubuntu; font-weight: 400;">Ubuntu Regular</option>   
+    <option value="15"; onfocus="UbuntuM()" style="font-family:Ubuntu; font-weight: 500;">Ubuntu Medium</option>
+    <option value="16"; onfocus="UbuntuB()" style="font-family:Ubuntu; font-weight: 900;">Ubuntu Bold</option>      
+</select>
+
+<select onchange="justify()";  style="font-size:2rem; margin-top:2px; margin-right: 1.1rem; float: right;" name="cd" id="TXT-JST">
+    <option value="1";  onfocus="Left()"; style="font-family:Arial;" >Left</option>
+    <option value="2"; onfocus="Center()" style="font-family:Arial;">Center</option>
+    <option value="3"; onfocus="Right()" style="font-family:Arial;">Right</option>
+    <option value="4"; onfocus="Justify()" style="font-family:Arial;">Justify</option>
+</select>
+
+<select onchange="bolden()";  style="font-size:2rem; margin-top:2px; margin-right: 1.1rem; float: right;" name="gh" id="TXT-BLD">
+    <option value="1";  onfocus="Regular()"; style="font-family:Arial;  font-weight: normal;" >Normal</option>
+    <option value="2"; onfocus="Bold()"; style="font-family:Arial; font-weight: bold;"  >Bold</option>
+</select>
+
+<select onchange="sizing()"; style="font-size:2rem; margin-top:2px; margin-right: 1.1rem; float: right;" name="ef" id="TXT-SZE">
+    <option selected value="1";  onfocus="Def()"; style="font-family:Arial; font-size:2rem;" >Default</option>
+    <option value="1";  onfocus="10()"; style="font-family:Arial; font-size:10;" >10</option>
+    <option value="2"; onfocus="12()" style="font-family:Arial; font-size:12;">12</option>
+    <option value="3"; onfocus="14()" style="font-family:Arial; font-size:14;">14</option>
+    <option value="4"; onfocus="16()" style="font-family:Arial; font-size:16;">16</option>
+    <option value="4"; onfocus="18()" style="font-family:Arial; font-size:18;">18</option>
+    <option value="5"; "onfocus="20()" style="font-family:Arial; font-size:20;">20</option>
+    <option value="6"; onfocus="22()" style="font-family:Arial; font-size:22;">22</option>
+    <option value="7"; onfocus="24()" style="font-family:Arial; font-size:24;">24</option>
+    <option value="8"; onfocus="26()" style="font-family:Arial; font-size:26;">26</option>
+    <option value="9"; onfocus="28()" style="font-family:Arial; font-size:28;">28</option>
+    <option value="10"; onfocus="30()" style="font-family:Arial; font-size:30;">30</option> 
+    <option value="11"; onfocus="32()" style="font-family:Arial; font-size:32;">32</option>
+    <option value="12"; onfocus="34()" style="font-family:Arial; font-size:34;">34</option>
+    <option value="13"; onfocus="36()" style="font-family:Arial; font-size:36;">36</option>
+    <option value="14"; onfocus="38()" style="font-family:Arial; font-size:38;">38</option>
+    <option value="15"; onfocus="40()" style="font-family:Arial; font-size:40;">40</option>
+    <option value="15"; onfocus="42()" style="font-family:Arial; font-size:42;">42</option>
+    <option value="15"; onfocus="44()" style="font-family:Arial; font-size:44;">44</option>
+    <option value="15"; onfocus="46()" style="font-family:Arial; font-size:46;">46</option>
+    <option value="15"; onfocus="48()" style="font-family:Arial; font-size:48;">48</option>
+    <option value="15"; onfocus="50()" style="font-family:Arial; font-size:50;">50</option>
+</select>
+</td>
+<td> 
+<button type="button" style="position: absolute; font-size:2rem; padding-left: 15px; padding-right: 15px; font-family:Arial; right: 20px; float: right;" onclick="Toggle()">˅</button></td>
+</tr>
+</center>
+</div>
+
+<div id="Options2" style="font-family:Arial; margin-left: 0.3rem; margin-top: -2rem; display: none;">
+
+ <button type="button" style=" font-size:2rem; padding-left: 15px; padding-right: 15px; font-family:Arial; margin-right: -4.0rem; float: right;" onclick="Scroll()" id="NoWay">Wallpaper 1</button>
+  
+  <button type="button" style=" font-size:2rem; padding-left: 15px; padding-right: 15px; font-family:Arial; margin-right: -4.0rem; float: right;display: none;" onclick="Scroll2()" id="Yes">Scrolling: Yes</button>
+
+<!--  
+<button type="button" style=" font-size:2rem; padding-left: 15px; padding-right: 15px; font-family:Arial; margin-right: -4.0rem; float: right;"     onclick="SaveSett()">Save Settings</button>
+-->
+ <td>
+
+<select onchange="backgroundRGB()";  style="font-size:2rem; margin-top:2px; margin-right: 1.3rem; float: right;" name="lomenop" id="BG-COLOR">
+
+    <option value="1"; onfocus="white" style="font-family:Arial; background-color: white;" >White</option>  
+    <option value="2"; onfocus="Gray" style="font-family:Arial; background-color: gray;" >Gray</option>    
+    <option value="3"; onfocus="Silver" style="font-family:Arial; background-color: silver;" >Silver</option>
+    <option value="4"; onfocus="Black" style="font-family:Arial; background-color: black;">Black</option>  
+    <option value="5";  onfocus="Olive"; style="font-family:Arial; background-color: olive;" >Olive</option>
+    <option value="6";  onfocus="Green"; style="font-family:Arial; background-color: green;" >Green</option>
+    <option value="7"; onfocus="Purple" style="font-family:Arial; background-color: purple;" >Purple</option>
+    <option value="8"; onfocus="Fuchsia" style="font-family:Arial; background-color: fuchsia;" >Fuchsia</option>
+    <option value="9"; onfocus="Lime" style="font-family:Arial; background-color: lime;" >Lime</option>
+    <option value="10"; onfocus="Teal" style="font-family:Arial; background-color: teal;" >Teal</option>
+    <option value="11"; onfocus="Aqua" style="font-family:Arial; background-color: aqua;" >Aqua</option>
+    <option value="12"; onfocus="Blue" style="font-family:Arial; background-color: blue;" >Blue</option>
+    <option value="13"; onfocus="Navy" style="font-family:Arial; background-color: navy;" >Navy</option>
+    <option value="14";  onfocus="Maroon"; style="font-family:Arial; background-color: maroon;" >Maroon</option>	
+    <option value="15";  onfocus="Red"; style="font-family:Arial; background-color: red;" >Red</option>	
+    <option value="16";  onfocus="Orange"; style="font-family:Arial; background-color: orange;" >Orange</option>	
+    <option value="17";  onfocus="Yellow"; style="font-family:Arial; background-color: yellow;" >Yellow</option>	
+</select>
+
+  <label for="BackScheme" style="font-size:2rem; margin-top:2px; margin-right: 1.1rem; float:right;">Background Color:</label>
+
+
+<select onchange="selectionRGB()";  style="font-size:2rem; margin-top:2px; margin-right: 1.0rem; float: right;" name="bcd" id="FG-COLOR">
+
+    <option value="1"; onfocus="Black" style="font-family:Arial; color: black;" >Black</option>  
+    <option value="2"; onfocus="Gray" style="font-family:Arial; color: gray;" >Gray</option>    
+    <option value="3"; onfocus="Silver" style="font-family:Arial; color: silver;" >Silver</option>
+    <option value="4"; onfocus="White" style="font-family:Arial; color: white;">White</option>  
+    <option value="5";  onfocus="Olive"; style="font-family:Arial;" >Olive</option>
+    <option value="6";  onfocus="Green"; style="font-family:Arial; color: green;" >Green</option>
+    <option value="7"; onfocus="Purple" style="font-family:Arial; color: purple;" >Purple</option>
+    <option value="8"; onfocus="Fuchsia" style="font-family:Arial; color: fuchsia;" >Fuchsia</option>
+    <option value="9"; onfocus="Lime" style="font-family:Arial; color: lime;" >Lime</option>
+    <option value="10"; onfocus="Teal" style="font-family:Arial; color: teal;" >Teal</option>
+    <option value="11"; onfocus="Aqua" style="font-family:Arial; color: aqua;" >Aqua</option>
+    <option value="12"; onfocus="Blue" style="font-family:Arial; color: blue;" >Blue</option>
+    <option value="13"; onfocus="Navy" style="font-family:Arial; color: navy;" >Navy</option>
+    <option value="14";  onfocus="Maroon"; style="font-family:Arial; color: maroon;" >Maroon</option>	
+    <option value="15";  onfocus="Red"; style="font-family:Arial; color: red;" >Red</option>	
+    <option value="16";  onfocus="Orange"; style="font-family:Arial; color: orange;" >Orange</option>	
+    <option value="17";  onfocus="Yellow"; style="font-family:Arial; color: yellow;" >Yellow</option>	
+</select>
+    <label for="FontColor" style="font-size:2rem; margin-top:2px; margin-right: 1.1rem; float:right;">Font Color:</label>
+
+    <button type="button" style=" font-size:2rem; padding-left: 15px; padding-right: 15px; font-family:Arial; margin-left: 60px; float: left;" onclick="Reset()" id="No">Reset</button>
+
+    <label for="SchemeColor" style="font-size:2rem; margin-top:2px; margin-left: 1.0rem; float: left;">Color Scheme:</label>
+
+    <select onchange="SchemeRGB()";  style="font-size:2rem; margin-top:2px; margin-left: 1.0rem; float: left;" name="iskima" id="scma">
+
+    <option value="1"; onfocus="White on Black" style="font-family:Arial; background-color: white; color: black" >White on Black</option>  
+    <option value="2"; onfocus="Black on White" style="font-family:Arial; background-color: black; color: white" >Black on White</option>    
+    <option value="3"; onfocus="Red on Black" style="font-family:Arial; background-color: black; color: red" >Red on Black</option>
+    <option value="4"; onfocus="Green on Black" style="font-family:Arial; background-color: black; color: green;">Green on Black</option>  
+    <option value="5";  onfocus="Yellow on Black"; style="font-family:Arial; background-color: black; color: yellow;" >Yellow on Black</option>
+    <option value="6";  onfocus="Gray on Blue"; style="font-family:Arial; background-color: navy; color: gray;" >Gray on Blue</option>
+    <option value="7"; onfocus="Blue on Gray" style="font-family:Arial; background-color: gray; color: navy;" >Blue on Gray</option>
+    <option value="8"; onfocus="Yellow on Gray" style="font-family:Arial; background-color: gray; color: yellow;" >Yellow on Gray</option>
+    <option value="9"; onfocus="Yellow on Blue" style="font-family:Arial; background-color: navy; color: yellow;" >Yellow on Blue</option>
+    <option value="10"; onfocus=" Blue on Yellow" style="font-family:Arial; background-color: yellow; color: navy;" >Blue on Yellow</option>
+    <option value="11";  onfocus="Black on Yellow"; style="font-family:Arial; background-color: black; color: yellow;" >Black on Yellow</option>
+    <option value="12"; onfocus="Red on Blue" style="font-family:Arial; background-color: navy; color: red" >Red on Blue</option>
+    <option value="13"; onfocus="Blue on Red" style="font-family:Arial; background-color: red; color: navy;" >Blue on Red</option>
+    <option value="14"; onfocus="Custom" style="font-family:Arial;" >Custom</option>
+</select>
+
+</td>
+
+<button type="button" style="position: absolute; font-size:2rem; padding-left: 15px; padding-right: 15px; font-family:Arial; right: 20px; float: right; vertical-align: middle" onclick="Toggle()">˄</button></td>
+
+<script>
+function Toggle() {
+
+    var x = document.getElementById("Options");
+    var y = document.getElementById("Options2");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+  if (y.style.display === "none") {
+        y.style.display = "block";
+    } else {
+        y.style.display = "none";
+    }
+}
+</script>
+
+<script>
+function selectionRGB () {
+var x = document.getElementById("FG-COLOR").selectedIndex;
+var y = document.getElementById("FG-COLOR").options;
+document.getElementById("content").style.color = ( y[x].text);
+document.getElementById("title").style.color = ( y[x].text);
+document.getElementById("BG-COLOR").style.color = ( y[x].text);
+document.getElementById("FG-COLOR").style.color = ( y[x].text);
+document.getElementById("scma").value = "14"
+document.getElementById("scma").style.color = ( y[x].text);
+document.getElementById("DocInfo").style.color = ( y[x].text)
+}
+</script>
+
+<script>
+window.color = document.getElementById('FG-COLOR');
+window.back = document.getElementById('BG-COLOR');
+window.scheme = document.getElementById('schma');
+window.justify = document.getElementById('TXT-JST');
+window.bolden = document.getElementById('TXT-BLD');
+window.size = document.getElementById('TXT-SZE');
+window.font = document.getElementById('FNT-TYP');
+</script>
+
+<script>
+function SchemeRGB () {
+var x = document.getElementById("scma").selectedIndex;
+var y = document.getElementById("scma").options;
+var button = document.getElementById('opctyon');
+var button2 = document.getElementById('opctyoff');
+button.style.display = "block";
+button2.style.display = "none";
+
+if(document.getElementById('scma').value == "1") {
+document.getElementById("content").style.color = "black";
+document.getElementById("title").style.color = "black";
+document.getElementById("BG-COLOR").style.color = "black";
+document.getElementById("FG-COLOR").style.color = "black";
+document.getElementById("scma").style.color = "black";
+document.getElementById("DocInfo").style.color = "black";
+document.getElementById("content").style.background = "white";
+document.getElementById("title").style.background = "white";
+document.getElementById("FG-COLOR").style.background = "white";
+document.getElementById("BG-COLOR").style.background = "white";
+document.getElementById("scma").style.background = "white";
+document.getElementById("content").style.background = "white";
+document.getElementById("DocInfo").style.background = "white";
+document.getElementById("FG-COLOR").value = "1";
+document.getElementById("BG-COLOR").value = "1";
+}
+
+if(document.getElementById('scma').value == "2") {
+document.getElementById("content").style.color = "white";
+document.getElementById("title").style.color = "white";
+document.getElementById("BG-COLOR").style.color = "white";
+document.getElementById("FG-COLOR").style.color = "white";
+document.getElementById("scma").style.color = "white";
+document.getElementById("DocInfo").style.color = "white";
+document.getElementById("content").style.background = "black";
+document.getElementById("title").style.background = "black";
+document.getElementById("FG-COLOR").style.background = "black";
+document.getElementById("BG-COLOR").style.background = "black";
+document.getElementById("scma").style.background = "black";
+document.getElementById("DocInfo").style.background = "black";
+document.getElementById("FG-COLOR").value = "4";
+document.getElementById("BG-COLOR").value = "4";
+}
+
+if(document.getElementById('scma').value == "3") {
+document.getElementById("content").style.color = "red";
+document.getElementById("title").style.color = "red";
+document.getElementById("BG-COLOR").style.color = "red";
+document.getElementById("FG-COLOR").style.color = "red";
+document.getElementById("scma").style.color = "red";
+document.getElementById("DocInfo").style.color = "red";
+document.getElementById("content").style.background = "black";
+document.getElementById("title").style.background = "black";
+document.getElementById("FG-COLOR").style.background = "black";
+document.getElementById("BG-COLOR").style.background = "black";
+document.getElementById("scma").style.background = "black";
+document.getElementById("DocInfo").style.background = "black";
+document.getElementById("FG-COLOR").value = "15";
+document.getElementById("BG-COLOR").value = "4";
+}
+
+if(document.getElementById('scma').value == "4") {
+document.getElementById("content").style.color = "green";
+document.getElementById("title").style.color = "green";
+document.getElementById("BG-COLOR").style.color = "green";
+document.getElementById("FG-COLOR").style.color = "green";
+document.getElementById("scma").style.color = "green";
+document.getElementById("DocInfo").style.color = "green";
+document.getElementById("content").style.background = "black";
+document.getElementById("title").style.background = "black";
+document.getElementById("FG-COLOR").style.background = "black";
+document.getElementById("BG-COLOR").style.background = "black";
+document.getElementById("scma").style.background = "black";
+document.getElementById("DocInfo").style.background = "black";
+document.getElementById("FG-COLOR").value = "6";
+document.getElementById("BG-COLOR").value = "4";
+}
+
+if(document.getElementById('scma').value == "5") {
+document.getElementById("content").style.color = "yellow";
+document.getElementById("title").style.color = "yellow";
+document.getElementById("BG-COLOR").style.color = "yellow";
+document.getElementById("FG-COLOR").style.color = "yellow";
+document.getElementById("scma").style.color = "yellow";
+document.getElementById("DocInfo").style.color = "yellow";
+document.getElementById("content").style.background = "black";
+document.getElementById("title").style.background = "black";
+document.getElementById("FG-COLOR").style.background = "black";
+document.getElementById("BG-COLOR").style.background = "black";
+document.getElementById("scma").style.background = "black";
+document.getElementById("DocInfo").style.background = "black";
+document.getElementById("FG-COLOR").value = "17";
+document.getElementById("BG-COLOR").value = "4";
+}
+
+if(document.getElementById('scma').value == "6") {
+document.getElementById("content").style.color = "gray";
+document.getElementById("title").style.color = "gray";
+document.getElementById("BG-COLOR").style.color = "gray";
+document.getElementById("FG-COLOR").style.color = "gray";
+document.getElementById("scma").style.color = "gray";
+document.getElementById("DocInfo").style.color = "gray";
+document.getElementById("content").style.background = "navy";
+document.getElementById("title").style.background = "navy";
+document.getElementById("FG-COLOR").style.background = "navy";
+document.getElementById("BG-COLOR").style.background = "navy";
+document.getElementById("scma").style.background = "navy";
+document.getElementById("DocInfo").style.background = "navy";
+document.getElementById("FG-COLOR").value = "2";
+document.getElementById("BG-COLOR").value = "12";
+}
+
+if(document.getElementById('scma').value == "7") {
+document.getElementById("content").style.color = "navy";
+document.getElementById("title").style.color = "navy";
+document.getElementById("BG-COLOR").style.color = "navy";
+document.getElementById("FG-COLOR").style.color = "navy";
+document.getElementById("scma").style.color = "navy";
+document.getElementById("DocInfo").style.color = "navy";
+document.getElementById("content").style.background = "gray";
+document.getElementById("title").style.background = "gray";
+document.getElementById("FG-COLOR").style.background = "gray";
+document.getElementById("BG-COLOR").style.background = "gray";
+document.getElementById("scma").style.background = "gray";
+document.getElementById("DocInfo").style.background = "gray";
+document.getElementById("FG-COLOR").value = "12";
+document.getElementById("BG-COLOR").value = "2";
+}
+
+if(document.getElementById('scma').value == "8") {
+document.getElementById("content").style.color = "yellow";
+document.getElementById("title").style.color = "yellow";
+document.getElementById("BG-COLOR").style.color = "yellow";
+document.getElementById("FG-COLOR").style.color = "yellow";
+document.getElementById("scma").style.color = "yellow";
+document.getElementById("DocInfo").style.color = "yellow";
+document.getElementById("content").style.background = "gray";
+document.getElementById("title").style.background = "gray";
+document.getElementById("FG-COLOR").style.background = "gray";
+document.getElementById("BG-COLOR").style.background = "gray";
+document.getElementById("scma").style.background = "gray";
+document.getElementById("DocInfo").style.background = "gray";
+document.getElementById("FG-COLOR").value = "17";
+document.getElementById("BG-COLOR").value = "2";
+}
+
+if(document.getElementById('scma').value == "9") {
+document.getElementById("content").style.color = "yellow";
+document.getElementById("title").style.color = "yellow";
+document.getElementById("BG-COLOR").style.color = "yellow";
+document.getElementById("FG-COLOR").style.color = "yellow";
+document.getElementById("scma").style.color = "yellow";
+document.getElementById("DocInfo").style.color = "yellow";
+document.getElementById("content").style.background = "navy";
+document.getElementById("title").style.background = "navy";
+document.getElementById("FG-COLOR").style.background = "navy";
+document.getElementById("BG-COLOR").style.background = "navy";
+document.getElementById("scma").style.background = "navy";
+document.getElementById("DocInfo").style.background = "navy";
+document.getElementById("FG-COLOR").value = "17";
+document.getElementById("BG-COLOR").value = "12";
+}
+
+if(document.getElementById('scma').value == "10") {
+document.getElementById("content").style.color = "navy";
+document.getElementById("title").style.color = "navy";
+document.getElementById("BG-COLOR").style.color = "navy";
+document.getElementById("FG-COLOR").style.color = "navy";
+document.getElementById("scma").style.color = "navy";
+document.getElementById("DocInfo").style.color = "navy";
+document.getElementById("content").style.background = "yellow";
+document.getElementById("title").style.background = "yellow";
+document.getElementById("FG-COLOR").style.background = "yellow";
+document.getElementById("BG-COLOR").style.background = "yellow";
+document.getElementById("scma").style.background = "yellow";
+document.getElementById("DocInfo").style.background = "yellow";
+document.getElementById("FG-COLOR").value = "12";
+document.getElementById("BG-COLOR").value = "17";
+}
+
+if(document.getElementById('scma').value == "11") {
+document.getElementById("content").style.color = "black";
+document.getElementById("title").style.color = "black";
+document.getElementById("BG-COLOR").style.color = "black";
+document.getElementById("FG-COLOR").style.color = "black";
+document.getElementById("scma").style.color = "black";
+document.getElementById("DocInfo").style.color = "black";
+document.getElementById("content").style.background = "yellow";
+document.getElementById("title").style.background = "yellow";
+document.getElementById("FG-COLOR").style.background = "yellow";
+document.getElementById("BG-COLOR").style.background = "yellow";
+document.getElementById("scma").style.background = "yellow";
+document.getElementById("DocInfo").style.background = "yellow";
+document.getElementById("FG-COLOR").value = "1";
+document.getElementById("BG-COLOR").value = "17";
+}
+
+if(document.getElementById('scma').value == "12") {
+document.getElementById("content").style.color = "red";
+document.getElementById("title").style.color = "red";
+document.getElementById("BG-COLOR").style.color = "red";
+document.getElementById("FG-COLOR").style.color = "red";
+document.getElementById("scma").style.color = "red";
+document.getElementById("DocInfo").style.color = "red";
+document.getElementById("content").style.background = "navy";
+document.getElementById("title").style.background = "navy";
+document.getElementById("FG-COLOR").style.background = "navy";
+document.getElementById("BG-COLOR").style.background = "navy";
+document.getElementById("scma").style.background = "navy";
+document.getElementById("DocInfo").style.background = "navy";
+document.getElementById("FG-COLOR").value = "15";
+document.getElementById("BG-COLOR").value = "12";
+}
+
+if(document.getElementById('scma').value == "13") {
+document.getElementById("content").style.color = "navy";
+document.getElementById("title").style.color = "navy";
+document.getElementById("BG-COLOR").style.color = "navy";
+document.getElementById("FG-COLOR").style.color = "navy";
+document.getElementById("scma").style.color = "navy";
+document.getElementById("DocInfo").style.color = "navy";
+document.getElementById("content").style.background = "red";
+document.getElementById("title").style.background = "red";
+document.getElementById("FG-COLOR").style.background = "red";
+document.getElementById("BG-COLOR").style.background = "red";
+document.getElementById("scma").style.background = "red";
+document.getElementById("DocInfo").style.background = "red";
+document.getElementById("FG-COLOR").value = "12";
+document.getElementById("BG-COLOR").value = "15";
+}
+var border = document.getElementById("scma").style.background;
+
+if  ( border === 'black')
+{
+document.getElementById("content").style.borderColor = "white";
+document.getElementById("title").style.borderColor = "white";
+document.getElementById("DocInfo").style.borderColor = "white";
+}
+else
+{
+document.getElementById("content").style.borderColor = "black";
+document.getElementById("title").style.borderColor = "black";
+document.getElementById("DocInfo").style.borderColor = "black";
+}
+}
+</script>
+
+<script>
+function backgroundRGB () {
+var x = document.getElementById("BG-COLOR").selectedIndex;
+var y = document.getElementById("BG-COLOR").options;
+
+{
+document.getElementById("content").style.background = ( y[x].text);
+document.getElementById("title").style.background = ( y[x].text);
+document.getElementById("FG-COLOR").style.background = ( y[x].text);
+document.getElementById("BG-COLOR").style.background = ( y[x].text);
+document.getElementById("DocInfo").style.background = ( y[x].text);
+document.getElementById("scma").value = "14"
+document.getElementById("scma").style.background = ( y[x].text);
+var button = document.getElementById('opctyon');
+var button2 = document.getElementById('opctyoff');
+button.style.display = "block";
+button2.style.display = "none";
+}
+
+var border = document.getElementById("scma").style.background;
+
+if  ( border === 'black')
+{
+document.getElementById("content").style.borderColor = "white";
+document.getElementById("title").style.borderColor = "white";
+document.getElementById("DocInfo").style.borderColor = "white";
+}
+else
+{
+document.getElementById("content").style.borderColor = "black";
+document.getElementById("title").style.borderColor = "black";
+document.getElementById("DocInfo").style.borderColor = "black";
+}
+
+opctyrespect();
+
+}
+</script>
+
+<script>
+
+function ClarOn() {
+var x = document.getElementById("overlay");
+var y = document.getElementById("Options2");
+    if (x.style.display === "none") 
+{
+        x.style.display = "block";
+	document.getElementById("claron").innerHTML = "Menu Clarity: ON";
+} 
+else 
+{
+        x.style.display = "none";
+	document.getElementById("claron").innerHTML = "Menu Clarity: OFF";
+}
+}
+
+</script>
+
+
+<script>
+
+function Reset () {
+var result = confirm("Are you sure, You want to reset all formatting settings?");
+if (result) {
+document.getElementById("content").style.color = "black";
+document.getElementById("title").style.color = "black";
+document.getElementById("BG-COLOR").style.color = "black";
+document.getElementById("FG-COLOR").style.color = "black";
+document.getElementById("scma").style.color = "black";
+document.getElementById("DocInfo").style.color = "black";
+document.getElementById("content").style.background = "white";
+document.getElementById("title").style.background = "white";
+document.getElementById("FG-COLOR").style.background = "white";
+document.getElementById("BG-COLOR").style.background = "white";
+document.getElementById("scma").style.background = "white";
+document.getElementById("content").style.background = "white";
+document.getElementById("DocInfo").style.background = "white";
+document.getElementById("DocInfo").style.borderColor = "black";
+document.getElementById("content").style.borderColor = "black";
+document.getElementById("content").style.fontFamily = "arial";
+document.getElementById("DocInfo").style.fontFamily = "arial";
+document.getElementById("title").style.fontFamily = "arial";
+document.getElementById("content").style.fontSize = "30";
+document.getElementById("content").style.textAlign = "left";
+document.getElementById("content").style.fontWeight= "normal";
+document.getElementById("FG-COLOR").value = "1";
+document.getElementById("BG-COLOR").value = "1";
+document.getElementById("BG-COLOR").value = "1";
+document.getElementById("FNT-TYP").value = "1";
+document.getElementById("TXT-SZE").value = "1";
+document.getElementById("TXT-JST").value = "1";
+document.getElementById("TXT-BLD").value = "1";
+document.getElementById("scma").value = "1";
+document.getElementById("content").style.height = "65vh";
+}
+}
+</script>
+
+<script>
+function justify () {
+var x = document.getElementById("TXT-JST").selectedIndex;
+var y = document.getElementById("TXT-JST").options;
+document.getElementById("content").style.textAlign = ( y[x].text);
+}
+</script>
+
+<script>
+function bolden () {
+var x = document.getElementById("TXT-BLD").selectedIndex;
+var y = document.getElementById("TXT-BLD").options;
+document.getElementById("content").style.fontWeight= ( y[x].text);
+}
+</script>
+
+<script>
+function sizing () {
+var x = document.getElementById("TXT-SZE").selectedIndex;
+var y = document.getElementById("TXT-SZE").options;
+document.getElementById("content").style.fontSize = ( y[x].text);
+}
+</script>
+
+<script>
+function selection () {
+var x = document.getElementById("FNT-TYP").selectedIndex;
+var y = document.getElementById("FNT-TYP").options;
+document.getElementById("content").style.fontFamily = ( y[x].text);
+document.getElementById("title").style.fontFamily = ( y[x].text);
+
+var weight = ( y[x].text);
+
+if (y[x].value == 13) {
+document.getElementById("content").style.fontWeight = '100';
+document.getElementById("title").style.fontWeight = '100';
+document.getElementById("content").style.fontFamily = 'Ubuntu';
+document.getElementById("title").style.fontFamily = 'Ubuntu';
+}
+else if (y[x].value == 14) {
+document.getElementById("content").style.fontWeight = '400';
+document.getElementById("title").style.fontWeight = '400';
+document.getElementById("content").style.fontFamily = 'Ubuntu';
+document.getElementById("title").style.fontFamily = 'Ubuntu';
+}
+else if (y[x].value == 15) {
+document.getElementById("content").style.fontWeight = '500';
+document.getElementById("title").style.fontWeight = '500';
+document.getElementById("content").style.fontFamily = 'Ubuntu';
+document.getElementById("title").style.fontFamily = 'Ubuntu';
+}
+else if (y[x].value == 16) {
+document.getElementById("content").style.fontWeight = '900';
+document.getElementById("title").style.fontWeight = '900';
+document.getElementById("content").style.fontFamily = 'Ubuntu';
+document.getElementById("title").style.fontFamily = 'Ubuntu';
+}
+}
+</script>
+
+<script>
+
+
+
+function sleep_ms(10000) {
+    var initiation = new Date().getTime();
+    while ((new Date().getTime() - initiation) < millisecs);
+}
+var numb = 1;
+
+async function Scroll() {
+/*
+   var w = document.getElementById("NoWay");
+   var x = document.getElementById("Yes");
+   var y =  document.getElementById("content");
+   var z =  document.getElementById("text");
+        w.style.display = "none";	
+        x.style.display = "block";
+        y.style.display = "none";
+        z.style.display = "block";     
+      var temp = document.getElementById('content').value;
+       document.getElementById('text').value = temp;
+       document.getElementById('content').value = "";
+       document.getElementById('text').style.height = "65vh";
+               
+*/
+      var body = document.getElementsByTagName('body')[0];
+/*body.style.backgroundImage = 'url(http://wallpaperswide.com/download/colorful_background-////wallpaper-1920x1080.jpg)'*/
+
+var back = ['http://wallpaperswide.com/download/colorful_background-wallpaper-1920x1080.jpg', 'http://getwallpapers.com/wallpaper/full/1/7/b/984444-new-color-hd-wallpaper-1920x1080-windows-10.jpg', 'http://genchi.info/image/wallpaper-colors-23.jpg', 'http://genchi.info/image/wallpaper-colors-22.jpg'];
+
+
+var rndm = Math.floor(Math.random() * 4) + 1;
+
+
+if (numb == 1) 
+{
+body.style.backgroundImage = "url(http://genchi.info/image/wallpaper-colors-22.jpg)"; 
+numb++;
+var button = document.getElementById('NoWay');
+button.innerText = button.textContent = 'Wallpaper 2';
+} 
+else if (numb == 2) 
+{
+body.style.backgroundImage = "url(http://genchi.info/image/wallpaper-colors-23.jpg)"; 
+numb++;
+var button = document.getElementById('NoWay');
+button.innerText = button.textContent = 'Wallpaper 3';
+} 
+else if (numb == 3) 
+{
+body.style.backgroundImage = "url(http://wallpaperswide.com/download/colorful_background-wallpaper-1920x1080.jpg)"
+numb ++;    
+var button = document.getElementById('NoWay');
+button.innerText = button.textContent = 'Wallpaper 4';
+} 
+else if (numb == 4) 
+{
+body.style.backgroundImage = "url(http://getwallpapers.com/wallpaper/full/b/2/7/13901.jpg)"
+numb ++;    
+var button = document.getElementById('NoWay');
+button.innerText = button.textContent = 'Wallpaper 5';
+} 
+else if (numb == 5) 
+{
+body.style.backgroundImage = "url(https://wallpapercave.com/download/cool-backgrounds-for-computer-desktops-h7rr0ag)"
+numb ++;    
+var button = document.getElementById('NoWay');
+button.innerText = button.textContent = 'Wallpaper 6';
+}
+else if (numb == 6) 
+{
+body.style.backgroundImage = "url(http://www.mytinyphone.com/uploads/users/shawtylow/421109.gif)"
+numb ++;    
+var button = document.getElementById('NoWay');
+button.innerText = button.textContent = 'Wallpaper 7';
+}
+else if (numb == 7) 
+{
+body.style.backgroundImage = "url(https://vignette.wikia.nocookie.net/the-house-of-anubis/images/3/3e/Backgrounds-neon.jpg/revision/latest/scale-to-width-down/640?cb=20141017211756)"
+numb ++;    
+var button = document.getElementById('NoWay');
+button.innerText = button.textContent = 'Wallpaper 8';
+}
+else if (numb == 8) 
+{
+body.style.backgroundImage = "url(https://wallpapertag.com/wallpaper/full/5/5/e/616774-beautiful-abstract-desktop-wallpaper-1920x1200.jpg)"
+numb ++;    
+var button = document.getElementById('NoWay');
+button.innerText = button.textContent = 'Wallpaper 9';
+}
+else if (numb == 9) 
+{
+body.style.backgroundImage = "url(http://getwallpapers.com/wallpaper/full/9/a/5/13849.jpg)"
+numb ++;    
+var button = document.getElementById('NoWay');
+button.innerText = button.textContent = 'Wallpaper 10';
+}
+else if (numb == 10) 
+{
+body.style.backgroundImage = "url(http://getwallpapers.com/wallpaper/full/1/7/b/984444-new-color-hd-wallpaper-1920x1080-windows-10.jpg)"
+numb = 1;    
+var button = document.getElementById('NoWay');
+button.innerText = button.textContent = 'Wallpaper 1';
+} 
+else 
+{
+numb ++;
+body.style.backgroundImage = "url(http://getwallpapers.com/wallpaper/full/1/7/b/984444-new-color-hd-wallpaper-1920x1080-windows-10.jpg)"; 
+numb++;
+var button = document.getElementById('NoWay');
+button.innerText = button.textContent = 'Wallpaper 1';
+}
+
+
+/*
+body.style.backgroundImage = "url(http://genchi.info/image/wallpaper-colors-22.jpg)";
+
+
+body.style.backgroundImage = "url(http://genchi.info/image/wallpaper-colors-23.jpg)";
+*/
+}
+
+
+function Scroll2() {
+   var w = document.getElementById("NoWay");
+   var x = document.getElementById("Yes");
+   var y =  document.getElementById("content");
+   var z =  document.getElementById("text");
+        w.style.display = "block";
+        x.style.display = "none";
+        y.style.display = "block";
+        z.style.display = "none";
+      var temp = document.getElementById('text').value;
+       document.getElementById('content').value = temp;
+       document.getElementById('text').value = "";
+
+    }
+
+</script>
+
+<script type="text/javascript">
+
+function OpacityOn() {
+var button = document.getElementById('opctyon');
+var button2 = document.getElementById('opctyoff');
+var bcolor = document.getElementById("content").style.backgroundColor; 
+
+if(bcolor == "white") 
+{ 
+document.getElementById("content").style.backgroundColor = "rgba(255,255,255,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(255,255,255,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(255,255,255,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "gray")
+{
+document.getElementById("content").style.backgroundColor = "rgba(128,128,128,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(128,128,128,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(128,128,128,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "silver")
+{
+document.getElementById("content").style.backgroundColor = "rgba(192,192,192,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(192,192,192,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(192,192,192,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "black")
+{
+document.getElementById("content").style.backgroundColor = "rgba(0,0,0,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(0,0,0,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(0,0,0,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "olive")
+{
+document.getElementById("content").style.backgroundColor = "rgba(128,128,0,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(128,128,0,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(128,128,0,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "green")
+{
+document.getElementById("content").style.backgroundColor = "rgba(0,128,0,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(0,128,0,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(0,128,0,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "purple")
+{
+document.getElementById("content").style.backgroundColor = "rgba(128,0,128,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(128,0,128,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(128,0,128,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "fuchsia")
+{
+document.getElementById("content").style.backgroundColor = "rgba(255,0,255,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(255,0,255,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(255,0,255,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "lime")
+{
+document.getElementById("content").style.backgroundColor = "rgba(0,255,0,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(0,255,0,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(0,255,0,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "teal")
+{
+document.getElementById("content").style.backgroundColor = "rgba(0,128,128,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(0,128,128,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(0,128,128,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "aqua")
+{
+document.getElementById("content").style.backgroundColor = "rgba(0,255,255,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(0,255,255,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(0,255,255,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "blue")
+{
+document.getElementById("content").style.backgroundColor = "rgba(0,0,255,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(255,0,255,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(255,0,255,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "navy")
+{
+document.getElementById("content").style.backgroundColor = "rgba(0,0,128,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(0,0,128,.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(0,0,128,.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "maroon")
+{
+document.getElementById("content").style.backgroundColor = "rgba(128,0,0,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(128,0,0,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(128,0,0,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "red")
+{
+document.getElementById("content").style.backgroundColor = "rgba(255,0,0,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(255,0,0,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(255,0,0,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "orange")
+{
+document.getElementById("content").style.backgroundColor = "rgba(255,165,0,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(255,165,0,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(255,165,0,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else if(bcolor == "yellow")
+{
+document.getElementById("content").style.backgroundColor = "rgba(255,255,0,0.50)";
+document.getElementById("title").style.backgroundColor = "rgba(255,255,0,0.50)";
+document.getElementById("DocInfo").style.backgroundColor = "rgba(255,255,0,0.50)";
+button.style.display = "none";
+button2.style.display = "block";
+}
+else
+{
+}
+}
+</script>
+
+<script>
+
+function OpacityOff() {
+var button = document.getElementById('opctyon');
+var button2 = document.getElementById('opctyoff');
+var bcolor = document.getElementById('BG-COLOR').value;
+
+
+/*document.getElementById('opctyoff').innerText = bcolor;*/
+
+if(bcolor == "1") 
+{ 
+document.getElementById("content").style.backgroundColor = "white";
+document.getElementById("title").style.backgroundColor = "white";
+document.getElementById("DocInfo").style.backgroundColor = "white";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "2")
+{
+document.getElementById("content").style.backgroundColor = "gray";
+document.getElementById("title").style.backgroundColor = "gray";
+document.getElementById("DocInfo").style.backgroundColor = "gray";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "3")
+{
+document.getElementById("content").style.backgroundColor = "silver";
+document.getElementById("title").style.backgroundColor = "silver";
+document.getElementById("DocInfo").style.backgroundColor = "silver";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "4")
+{
+document.getElementById("content").style.backgroundColor = "black";
+document.getElementById("title").style.backgroundColor = "black";
+document.getElementById("DocInfo").style.backgroundColor = "black";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "5")
+{
+document.getElementById("content").style.backgroundColor = "olive";
+document.getElementById("title").style.backgroundColor = "olive";
+document.getElementById("DocInfo").style.backgroundColor = "olive";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "6")
+{
+document.getElementById("content").style.backgroundColor = "green";
+document.getElementById("title").style.backgroundColor = "green";
+document.getElementById("DocInfo").style.backgroundColor = "green";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "6")
+{
+document.getElementById("content").style.backgroundColor = "purple";
+document.getElementById("title").style.backgroundColor = "purple";
+document.getElementById("DocInfo").style.backgroundColor = "purple";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "8")
+{
+document.getElementById("content").style.backgroundColor = "fuchsia";
+document.getElementById("title").style.backgroundColor = "fuchsia";
+document.getElementById("DocInfo").style.backgroundColor = "fuchsia";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "9")
+{
+document.getElementById("content").style.backgroundColor = "lime";
+document.getElementById("title").style.backgroundColor = "lime";
+document.getElementById("DocInfo").style.backgroundColor = "lime";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "10")
+{
+document.getElementById("content").style.backgroundColor = "teal";
+document.getElementById("title").style.backgroundColor = "teal";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "11")
+{
+document.getElementById("content").style.backgroundColor = "aqua";
+document.getElementById("title").style.backgroundColor = "aqua";
+document.getElementById("DocInfo").style.backgroundColor = "aqua";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "12")
+{
+document.getElementById("content").style.backgroundColor = "blue";
+document.getElementById("title").style.backgroundColor = "blue";
+document.getElementById("DocInfo").style.backgroundColor = "blue";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "13")
+{
+document.getElementById("content").style.backgroundColor = "navy";
+document.getElementById("title").style.backgroundColor = "navy";
+document.getElementById("DocInfo").style.backgroundColor = "navy";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "14")
+{
+document.getElementById("content").style.backgroundColor = "maroon";
+document.getElementById("title").style.backgroundColor = "maroon";
+document.getElementById("DocInfo").style.backgroundColor = "maroon";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "15")
+{
+document.getElementById("content").style.backgroundColor = "red";
+document.getElementById("title").style.backgroundColor = "red";
+document.getElementById("DocInfo").style.backgroundColor = "red";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "16")
+{
+document.getElementById("content").style.backgroundColor = "orange";
+document.getElementById("title").style.backgroundColor = "orange";
+document.getElementById("DocInfo").style.backgroundColor = "orange";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else if(bcolor == "17")
+{
+document.getElementById("content").style.backgroundColor = "yellow";
+document.getElementById("title").style.backgroundColor = "yellow";
+document.getElementById("DocInfo").style.backgroundColor = "yellow";
+button.style.display = "block";
+button2.style.display = "none";
+}
+else
+{
+}
+}
+</script>
+
+<script>
+function opctyrespect() {
+ var x = document.getElementById("opctyon");
+    var y = document.getElementById("opctyoff");
+    if (y.style.display === "none") 
+    {
+    OpacityOn();   
+    } 
+else 
+    {
+    OpacityOff();    
+    } 
+</script>
+
+<script type="text/javascript">
+var observe;
+if (window.attachEvent) {
+    observe = function (element, event, handler) {
+        element.attachEvent('on'+event, handler);
+    };
+}
+else {
+    observe = function (element, event, handler) {
+        element.addEventListener(event, handler, false);
+    };
+}
+function init () {
+    var text = document.getElementById('text');
+    function resize () {
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight+'px';
+    }
+    /* 0-timeout to get the already changed text */
+    function delayedResize () {
+        window.setTimeout(resize, 0);
+    }
+    observe(text, 'change',  resize);
+    observe(text, 'cut',     delayedResize);
+    observe(text, 'paste',   delayedResize);
+    observe(text, 'drop',    delayedResize);
+    observe(text, 'keydown', delayedResize);
+    observe(text, 'onload', delayedResize);
+
+    text.focus();
+    text.select();
+    resize();
+    window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+}
+</script>
+
+<script>
+function conit() {
+var txt;
+var r = confirm("Are you sure  ?");
+if (r == true) {
+   loadFileAsText();
+} else {
+    txt = "You pressed Cancel!";
+}
+</script>
+
+<script>
+function clearText()
+{
+var result = confirm("Create a new document? (Note: Any unsaved inormation will be lost!)");
+if (result) {
+     document.getElementById("content").value = "";
+     document.getElementById("title").value = "";
+}
+}
+</script>
+
+<script>
+function loadFileAsText()
+{
+var result = confirm("Load a document? (Note: Any unsaved inormation will be lost!)");
+if (result) {
+	var fileToLoad = document.getElementById("fileToLoad").files[0];
+
+	var fileReader = new FileReader();
+	fileReader.onload = function(fileLoadedEvent) 
+	{
+		var textFromFileLoaded = fileLoadedEvent.target.result;
+		
+	                  document.getElementById("content").value = textFromFileLoaded;
+		var fileInput = document.getElementById("fileToLoad");   
+		var filename = fileInput.files[0].name;
+		var noextension = filename.match(/^.*?([^\\/.]*)[^\\/]*$/)[1];
+		document.getElementById("title").value = noextension;
+		document.title = document.getElementById("title").value;
+		var textarea = document.getElementById("content");
+		var textValue=textarea.value;
+		var Settings ="####################################\n# Document settings, Donot modify! #\n####################################";
+if (textValue.indexOf(Settings) != -1)
+{
+alert ("Settings in file found, loading...");
+var temp = textValue.split("\n");
+
+
+var hilo3 = temp[temp.length - 8];
+var abbs3 = temp[temp.length - 7];
+var hi3 = temp[temp.length - 6];
+var hiya3 = temp[temp.length - 5];
+var hey3 = temp[temp.length - 4];
+var hola3 = temp[temp.length - 3];
+var scma3 = temp[temp.length -2];
+
+var hilo2 = hilo3.charAt(0);
+var abbs2 = abbs3.charAt(0);
+var hi2 = hi3.charAt(0);
+var hiya2 = hiya3.charAt(0);
+var hey2 = hey3.charAt(0);
+var hola2 = hola3.charAt(0);
+var scma2 = scma3.charAt(0);
+
+
+
+document.getElementById("FG-COLOR").value = hilo2;
+document.getElementById("BG-COLOR").value = abbs2;
+document.getElementById("FNT-TYP").value = hi2;
+document.getElementById("TXT-SZE").value = hiya2;
+document.getElementById("TXT-JST").value = hey2;
+document.getElementById("TXT-BLD").value = hola2;
+document.getElementById("scma").value = scma2;
+
+
+var elem = document.getElementById('content');
+var val  = elem.value.split(/(\r\n|\n|\r)/g).filter(function(n){return n.trim()});
+
+    console.log(val)
+    
+var i;
+for (i = 0; i < 10; i++) { 
+    val.pop();
+}
+
+
+    
+    elem.value = val.join('\r\n');
+
+
+sizing();
+bolden();
+selection();
+justify();
+backgroundRGB();
+selectionRGB();
+
+}
+
+else
+{
+alert("No settings found in file...");
+}
+	};
+
+
+	fileReader.readAsText(fileToLoad, "UTF-8");
+}
+
+}
+</script>
+
+<script>
+function saveTextAsFile()
+{
+if (!document.getElementById("title").value)
+{
+    var result = confirm("Document title is empty, Are sure you want to save?)");
+if (result) {
+var originalText = document.getElementById("content").value;
+var line1 = "####################################";
+var line2 = "# Document settings, Donot modify! #";
+var line3 = "####################################";
+var breaks ="\n";
+
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += line1;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += line2;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += line3;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+
+document.getElementById("content").value += document.getElementById("FG-COLOR").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("BG-COLOR").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("FNT-TYP").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("TXT-SZE").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("TXT-JST").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("TXT-BLD").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("scma").value;
+document.getElementById("content").value += breaks
+
+                  var textToWrite = document.getElementById("content").value;
+                  textToWrite = textToWrite.replace(/\n/g, "\r\n");
+	var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+	var fileNameToSaveAs = document.getElementById("title").value;
+	var downloadLink = document.createElement("a");
+	downloadLink.download = fileNameToSaveAs;
+	downloadLink.innerHTML = "Download File";
+	if (window.webkitURL != null)
+	{
+		// Chrome allows the link to be clicked
+		// without actually adding it to the DOM.
+		downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+	document.getElementById("content").value = originalText;
+	}
+	else
+	{
+	var originalText = document.getElementById("content").value;
+var line1 = "####################################";
+var line2 = "# Document settings, Donot modify! #";
+var line3 = "####################################";
+var breaks ="\n";
+
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += line1;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += line2;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += line3;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+
+document.getElementById("content").value += document.getElementById("FG-COLOR").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("BG-COLOR").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("FNT-TYP").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("TXT-SZE").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("TXT-JST").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("TXT-BLD").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("scma").value;
+document.getElementById("content").value += breaks
+
+		// Firefox requires the link to be added to the DOM
+		// before it can be clicked.
+		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+		downloadLink.onclick = destroyClickedElement;
+		downloadLink.style.display = "none";
+		document.body.appendChild(downloadLink);
+	}
+
+	downloadLink.click();
+}
+
+function destroyClickedElement(event)
+{
+	document.body.removeChild(event.target);
+}
+}
+
+else if (!document.getElementById("content").value)
+{
+    var result = confirm("Document body is empty, Are sure you want to save?)");
+if (result) {
+
+var originalText = document.getElementById("content").value;
+var line1 = "####################################";
+var line2 = "# Document settings, Donot modify! #";
+var line3 = "####################################";
+var breaks ="\n";
+
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += line1;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += line2;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += line3;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+
+document.getElementById("content").value += document.getElementById("FG-COLOR").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("BG-COLOR").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("FNT-TYP").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("TXT-SZE").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("TXT-JST").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("TXT-BLD").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("scma").value;
+document.getElementById("content").value += breaks
+
+ var textToWrite = document.getElementById("content").value;
+textToWrite = textToWrite.replace(/\n/g, "\r\n");
+	var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+	var fileNameToSaveAs = document.getElementById("title").value;
+
+	var downloadLink = document.createElement("a");
+	downloadLink.download = fileNameToSaveAs;
+	downloadLink.innerHTML = "Download File";
+	if (window.webkitURL != null)
+	{
+		// Chrome allows the link to be clicked
+		// without actually adding it to the DOM.
+		downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+		document.getElementById("content").value = originalText;
+	}
+	else
+	{
+		// Firefox requires the link to be added to the DOM
+		// before it can be clicked.
+		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+		downloadLink.onclick = destroyClickedElement;
+		downloadLink.style.display = "none";
+		document.body.appendChild(downloadLink);
+	}
+
+	downloadLink.click();
+}
+
+function destroyClickedElement(event)
+{
+	document.body.removeChild(event.target);
+}
+}
+else
+{
+
+var originalText = document.getElementById("content").value;
+var line1 = "####################################";
+var line2 = "# Document settings, Donot modify! #";
+var line3 = "####################################";
+var breaks ="\n";
+
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += line1;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += line2;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += line3;
+document.getElementById("content").value += breaks;
+document.getElementById("content").value += breaks;
+
+document.getElementById("content").value += document.getElementById("FG-COLOR").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("BG-COLOR").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("FNT-TYP").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("TXT-SZE").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("TXT-JST").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("TXT-BLD").value;
+document.getElementById("content").value += breaks
+document.getElementById("content").value += document.getElementById("scma").value;
+document.getElementById("content").value += breaks
+
+	var textToWrite = document.getElementById("content").value;
+	textToWrite = textToWrite.replace(/\n/g, "\r\n");
+	var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+	var fileNameToSaveAs = document.getElementById("title").value;
+
+	var downloadLink = document.createElement("a");
+	downloadLink.download = fileNameToSaveAs;
+	downloadLink.innerHTML = "Download File";
+	if (window.webkitURL != null)
+	{
+		// Chrome allows the link to be clicked
+		// without actually adding it to the DOM.
+		downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+		document.getElementById("content").value = originalText;
+	}
+	else
+	{
+		// Firefox requires the link to be added to the DOM
+		// before it can be clicked.
+		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+		downloadLink.onclick = destroyClickedElement;
+		downloadLink.style.display = "none";
+		document.body.appendChild(downloadLink);
+	}
+
+	downloadLink.click();
+}
+
+function destroyClickedElement(event)
+{
+	document.body.removeChild(event.target);
+}
+
+function imageX()
+{
+var t=setInterval(Scroll,1000); 
+}
+
+}
+</script>
+
+ <script type="text/javascript">
+              function getSelectedText() 
+               {
+                 var txtArea = document.getElementById("content");
+                 var selectedText;   
+                 if (txtArea.selectionStart != undefined)
+                   {    
+                       var startPosition = txtArea.selectionStart;
+                       var endPosition = txtArea.selectionEnd;
+                       selectedText = txtArea.value.substring(startPosition, endPosition);
+                    }
+                 alert("Searching for a Synonym for: " + selectedText);
+                 
+		 document.getElementById("thesaurus").src =
+                 "https://www.thesaurus.com/browse/"+ selectedText;
+		 document.getElementById("thesaurus").scrollTop = 550;
+
+		 var x = document.getElementById("thesaurus");
+	         x.style.display = "block";
+
+		 var y = document.getElementById("CloseT");
+	         y.style.display = "block";
+
+		 var z = document.getElementById("overlayz");
+	         z.style.display = "block";
+
+                 }
+function closeT() 
+                 {
+		 var x = document.getElementById("thesaurus");
+	         x.style.display = "none";
+
+		 var y = document.getElementById("CloseT");
+	         y.style.display = "none";	
+
+		 var z = document.getElementById("overlayz");
+	         z.style.display = "none";	
+
+		 }
+         </script>
+
+ <script type="text/javascript">
+              function getSelectedTextToo() 
+               {
+                 var txtArea = document.getElementById("content");
+                 var selectedText;   
+                 if (txtArea.selectionStart != undefined)
+                   {    
+                       var startPosition = txtArea.selectionStart;
+                       var endPosition = txtArea.selectionEnd;
+                       selectedText = txtArea.value.substring(startPosition, endPosition);
+                    }
+                 alert("Searching for the meaning of: " + selectedText);
+                 
+		 document.getElementById("dictionary").src =
+                 "https://www.dictionary.com/browse/"+ selectedText;
+		 document.getElementById("dictionary").scrollTop = 550;
+
+		 var a = document.getElementById("dictionary");
+	         a.style.display = "block";
+
+		 var b = document.getElementById("CloseD");
+	         b.style.display = "block";
+
+		 var c = document.getElementById("overlayzee");
+	         c.style.display = "block";
+                 }
+function closeD()
+                 {
+		 var a = document.getElementById("dictionary");
+	         a.style.display = "none";
+
+		 var b = document.getElementById("CloseD");
+	         b.style.display = "none";	
+
+		 var c = document.getElementById("overlayzee");
+	         c.style.display = "none";	
+		 }
+         </script>
+
+
+ <script type="text/javascript">
+
+setInterval(function(){ var text = document.getElementById("content").value;
+
+var wc = (text.split(/\W+/).length);
+
+var lc = (text.split(/\r\n|\r|\n/).length);
+
+var cc = text;
+
+var withoutSpace = text.replace(/ /g,"");
+var text = withoutSpace.length;
+
+
+cc.replace(/[\n\r]+/g, '');
+
+cc.replace(/\s{2,10}/g, ' ');
+
+len = cc.length;
+
+let now = new Date();
+
+var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+
+var MyDate = new Date();
+var MyDateString;
+
+MyDate.setDate(MyDate.getDate() + 20);
+
+MyDateString = ('0' + MyDate.getDate()).slice(-2) + '/'
+             + ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'
+             + MyDate.getFullYear();
+
+
+var MyDateToo = new Date();
+var MyDateStringToo;
+
+MyDateToo.setDate(MyDateToo.getDate() + 20);
+
+MyDateStringToo = ('0' + MyDateToo.getHours()).slice(-2) + ':'
+             + ('0' + (MyDateToo.getMinutes()+1)).slice(-2);
+
+
+
+document.getElementById("DocInfo").innerHTML = "Word Count: " + wc + "     Line Count: " + lc + "     Character Count: " + len + "     Time: " + MyDateStringToo + "     " + days[now.getDay()] + "     " + "Date: " + MyDateString;
+ }, 10000);
+
+         </script>
+
